@@ -3,12 +3,12 @@
 
 % Add caffe matlab wrapper path.
 % Change to your path
-config.CAFFE_MATLAB_PATH = '/u/vis/nzhang/projects/caffe/matlab/caffe/';
+config.CAFFE_MATLAB_PATH = '/home/qiyuliao/Env/caffe/matlab/caffe/';
 addpath(config.CAFFE_MATLAB_PATH)
 
 % Add liblinear package path
 % Change to your path
-addpath(genpath('/u/vis/nzhang/projects/birdmix/kdes_2.0/liblinear-1.5-dense-float'));
+addpath('/usr/local/MATLAB/R2014a/toolbox/liblinear-multicore-2.11-2/matlab/');
 
 % Define pretrained model definition files and pretrained model paths.
 model_def = 'caches/cub_finetune_deploy_fc7.prototxt';

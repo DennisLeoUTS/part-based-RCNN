@@ -69,9 +69,9 @@ for i = 1 : config.N_parts
   TST_fea = [TST_fea test_fea_gt{i}];
 end
 TST_fea = scale_feature(TST_fea);
-[~,accuracy,~] = predict(config.testlabel, single(TST_fea), model);
-results.oracle_accuracy = accuracy;
-fprintf('Accuracy of using oracle part boxes is %f\n', accuracy);
+[~,accuracy,~] = predict(config.testlabel, sparse(double(TST_fea)), model);
+results.oracle_accuracy = accuracy(1);
+fprintf('Accuracy of using oracle part boxes is %f\n', accuracy(1));
 
 for method = 1 : config.N_methods 
   TST_fea = [];
@@ -79,9 +79,9 @@ for method = 1 : config.N_methods
     TST_fea = [TST_fea test_fea{i, method}];
   end
   TST_fea = scale_feature(TST_fea);
-  [~,accuracy,~] = predict(config.testlabel, single(TST_fea), model);
-  results.detected_accuracy(method) = accuracy;
-  fprintf('Accuracy of %s is %f\n', config.methods{method}, accuracy);
+  [~,accuracy,~] = predict(config.testlabel, sparse(double(TST_fea)), model);
+  results.detected_accuracy(method) = accuracy(1);
+  fprintf('Accuracy of %s is %f\n', config.methods{method}, accuracy(1));
 end
 end
 
